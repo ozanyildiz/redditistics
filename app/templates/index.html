@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>redditistics | What's on the front page?</title>
+		<link rel="stylesheet" href="static/css/style.css">
+		<link href='http://fonts.googleapis.com/css?family=Neuton:400,800' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+		<div class="wrapper">
+			<header>
+				<h1>redditistics</h1>
+				<h2>What's on the front page?</h2>
+				<hr>
+			</header>
+			<div class="container">
+				{% for story in stories %}
+				<div class="story">
+					<a href={{ story['url'] }}><img src={{ story['thumbnail'] }}></a>
+					<p>
+						<a href={{ story['url'] }}><p>{{ story['title'] }}</a>
+						<span class="detail">({{ story['domain'] }})<br>
+						{{ story['subreddit'] }} | {{ story['score'] }} | <a href={{ story['permalink'] }}>{{ story['num_comments'] }} comments</a>
+						</span>
+					</p>
+				</div>
+				{% endfor %}
+			</div>
+			<footer>I'm footer</footer>
+		</div>
+	</body>
+</html>
