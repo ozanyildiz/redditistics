@@ -84,3 +84,7 @@ header h2 {
 .detail a {
 	color: #8B8888;
 }
+
+footer {
+	clear: both;
+} 
