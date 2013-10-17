@@ -1,34 +1,17 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>redditistics | What's on the front page?</title>
-		<link rel="stylesheet" href="static/css/style.css">
-		<link href='http://fonts.googleapis.com/css?family=Neuton:400,800' rel='stylesheet' type='text/css'>
-		<link href='http://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
-	</head>
-	<body>
-		<div class="wrapper">
-			<header>
-				<h1>redditistics</h1>
-				<h2>What's on the front page?</h2>
-				<hr>
-			</header>
-			<h2><a href="#">{{ prev_day }}</a>{{ page_title }}<a href="#">{{ next_day }}</a></h2>
-			<div class="container">
-				{% for story in stories %}
-				<div class="story">
-					<a href={{ story['url'] }}><img src={{ story['thumbnail'] }}></a>
-					<p>
-						<a href={{ story['url'] }}><p>{{ story['title'] }}</a>
-						<span class="detail">({{ story['domain'] }})<br>
-						{{ story['subreddit'] }} | {{ story['score'] }} | <a href={{ story['permalink'] }}>{{ story['num_comments'] }} comments</a>
-						</span>
-					</p>
-				</div>
-				{% endfor %}
-			</div>
-			<footer>I'm footer</footer>
-		</div>
-	</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+<header>
+	<h1>redditistics</h1>
+	<h2>What's on the front page?</h2>
+	<hr>
+</header>
+<h2><a href="{{ url_for('archive', year=prev_day.year, month=prev_day.month, day=prev_day.day) }}">Previous day</a>
+	{{ page_title }}<a href="{{ url_for('archive', year=next_day.year, month=next_day.month, day=next_day.day) }}">Next day</a></h2>
+<div class="container">
+	{% for story in stories %}
+		{% include 'story.html' %}
+	{% endfor %}
+</div>
+
+{% endblock %}
