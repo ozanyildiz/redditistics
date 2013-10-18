@@ -1,5 +1,7 @@
 <div class="story">
-	<a href={{ story['url'] }}><img src={{ story['thumbnail'] }}></a>
+	<a href={{ story['url'] }}>
+		<img src={% if story['thumbnail'] == "": %} '../static/img/no-thumbnail.png' {% else: %} {{ story['thumbnail'] }} {% endif %}
+	</a>
 	<p>
 		<a href={{ story['url'] }}><p>{{ story['title'] }}</a>
 			<span class="detail">({{ story['domain'] }})<br>
@@ -7,3 +9,4 @@
 			</span>
 	</p>
 </div>
+

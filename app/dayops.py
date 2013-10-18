@@ -8,11 +8,17 @@ def get_next_day(date):
 	return date + one_day
 	
 def get_prettified(date):
-	today = datetime.utcnow()
-	if date.day == today.day and date.month == today.month and date.year == today.year:
+	if is_today(date):
 		return "Today"
 	return date.strftime('%B %d, %Y')
 
+def is_today(date):
+	today = get_today()
+	if date.day == today.day and date.month == today.month and date.year == today.year:
+		return True
+	else:
+		return False
+		
 def get_prev_day(date):
 	one_day = one_day_diff()
 	return date - one_day
