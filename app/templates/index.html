@@ -1,11 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-<header>
-	<h1>redditistics</h1>
-	<h2>What's on the front page?</h2>
-	<hr>
-</header>
 <h2><a href="{{ url_for('archive', year=prev_day.year, month=prev_day.month, day=prev_day.day) }}">Previous day</a>
 	{{ page_title }}<a href="{{ url_for('archive', year=next_day.year, month=next_day.month, day=next_day.day) }}">Next day</a></h2>
 <div class="container">
