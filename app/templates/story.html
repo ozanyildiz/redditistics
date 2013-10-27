@@ -5,7 +5,7 @@
 	<p>
 		<a href={{ story['url'] }}><p>{{ story['title'] }}</a>
 			<span class="detail">({{ story['domain'] }})<br>
-			{{ story['subreddit'] }} | {{ story['score'] }} | <a href={{ story['permalink'] }}>{{ story['num_comments'] }} comments</a>
+			{{ story['subreddit'] }} | {{ story['score'] }} | <a href={{ 'http://www.reddit.com' + story['permalink'] }}>{{ story['num_comments'] }} comments</a>
 			</span>
 	</p>
 </div>
