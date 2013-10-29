@@ -1,17 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>
-	<a href="{{ url_for('archive', year=prev_day.year, month=prev_day.month, day=prev_day.day) }}">Previous day</a>
-	{{ page_title }}
-	{% if not is_today %}
-	<a href="{{ url_for('archive', year=next_day.year, month=next_day.month, day=next_day.day) }}">Next day</a>
-	{% endif %}
-</h2>
-<div class="container">
-	{% for story in stories %}
-		{% include 'story.html' %}
-	{% endfor %}
-</div>
+<button type="button" class="btn btn-large btn-primary" onclick="location.href='{{ url_for('archive', year=prev_day.year, month=prev_day.month, day=prev_day.day) }}'">
+	<span class="glyphicon glyphicon-chevron-left"></span> Back
+</button>
+
+{% if not is_today %}	
+<button type="button" class="btn btn-large btn-primary" onclick="location.href='{{ url_for('archive', year=next_day.year, month=next_day.month, day=next_day.day) }}'">
+	Next <span class="glyphicon glyphicon-chevron-right"></span> 
+</button>
+{% endif %}
+
+{% for story in stories %}
+	{% include 'story.html' %}
+{% endfor %}
 
 {% endblock %}
