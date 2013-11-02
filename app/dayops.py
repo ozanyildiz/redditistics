@@ -33,4 +33,4 @@ def one_day_diff():
 	return timedelta(days=1)
 
 def to_string(year, month, day):
-	return str(year) + '-' + str(month) + '-' + str(day)
+	return str(year) + '-' + str(month) + '-' + str(day).zfill(2)

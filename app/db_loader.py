@@ -15,7 +15,7 @@ def get_front_page_stories():
 	parsed = json.load(reddit_page)
 	return parsed['data']['children']
 	
-def get_prunned_story(story_data):
+def get_pruned_story(story_data):
 	s = dict()
 	s['title'] = story_data['title']
 	s['url'] = story_data['url']
@@ -31,13 +31,14 @@ def get_prunned_story(story_data):
 	return s
 	
 def main():
-	stories = get_db_stories()
-	while True:
-		raw_stories = get_front_page_stories()
-		for story in raw_stories:
-			prunned_story = get_prunned_story(story['data'])
-			stories.update({'permalink': prunned_story['permalink']}, prunned_story, True)
-		time.sleep(AN_HOUR)
+    stories = get_db_stories()
+    #while True:
+    raw_stories = get_front_page_stories()
+    for story in raw_stories:
+        pruned_story = get_pruned_story(story['data'])
+        #print pruned_story
+        stories.update({'permalink': pruned_story['permalink']}, pruned_story, True)
+#time.sleep(AN_HOUR)
 	
 
 if __name__ == "__main__":
