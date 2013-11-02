@@ -1,19 +1,19 @@
 <div class="media">
-	<a class="pull-left thumbnail" href={{ story['url'] }}>
-		<img class="media-object" src={{ story['thumbnail'] }}>
-	</a>
-	<div class="media-body">
-		<a href={{ story['url'] }}>
-			<h4 class="media-heading">{{ story['title'] }}</h4>
-		</a>
-		<a href={{ "http://www.reddit.com/r/" + story['subreddit'] }}>
-			<span class="label label-info">{{ story['subreddit'] }}</span>
-		</a>
-		<a href={{ "http://www.reddit.com" + story['permalink'] }}>
-			<span class="label label-info">{{ story['score'] }}</span>
-		</a>
-		<a href={{ "http://www.reddit.com" + story['permalink'] }}>
-			<span class="label label-info">{{ story['num_comments'] }} comments</span>
-		</a>
-	</div>
+    <a class="pull-left thumbnail" href={{ story['url'] }}>
+        <img class="media-object" src={{ story['thumbnail'] }}>
+    </a>
+    <div class="media-body">
+        <a href={{ story['url'] }}>
+            <h4 class="media-heading">{{ story['title'] }}</h4>
+        </a>
+        <a href={{ "http://www.reddit.com/r/" + story['subreddit'] }}>
+            <span class="label label-info">{{ story['subreddit'] }}</span>
+        </a>
+        <a href={{ "http://www.reddit.com" + story['permalink'] }}>
+            <span class="label label-info">{{ story['score'] }}</span>
+        </a>
+        <a href={{ "http://www.reddit.com" + story['permalink'] }}>
+            <span class="label label-info">{{ story['num_comments'] }} comments</span>
+        </a>
+    </div>
 </div>
