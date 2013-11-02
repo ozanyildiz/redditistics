@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>The Redditistics REST API</h1>
+<table class="table table-hover">
+    <tr>
+        <th>Resource</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>GET /stories/year-month-day</td>
+        <td>Returns all stories at given date in descending order based on scores.</td>
+    </tr>
+</table>
+
+{% endblock %}

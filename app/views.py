@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, jsonify
 import mongodb
 from dayops import *
 from app import app
@@ -15,3 +15,13 @@ def archive(year=get_today().year, month=get_today().month, day=get_today().day)
         page_title=page_title, stories=stories,
         prev_day=get_prev_day(date), next_day=get_next_day(date),
         is_today=is_today(date))
+
+@app.route('/api')
+def api_page():
+    return render_template('api_page.html')
+
+@app.route('/api/stories/<int:year>-<int:month>-<int:day>')
+def get_stories(year, month, day):
+    date = construct_datetime_obj(year, month, day)
+    stories = mongodb.get_stories(get_formatted_date(date))
+    return jsonify({'stories': mongodb.json_encoder(stories)})
