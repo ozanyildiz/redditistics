@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>redditistics | What's on the front page?</title>
+        <link href="static/css/style.css" rel="stylesheet">
         <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
@@ -11,6 +12,12 @@
                 <h1>redditistics <small>What's in the front page?</small></h1>
             </div>
             {% block content %}{% endblock %}
+            <div id="push"></div>
+        </div>
+        <div id="footer">
+            <div class="container">
+                <p class="credit">Reddistics is developed by using <a href="http://flask.pocoo.org/">Flask</a> and it is open source. And <a href="https://github.com/ozanyildiz">Ozan</a> made this if you care.</p>
+            </div>
         </div>
     </body>
 </html>
