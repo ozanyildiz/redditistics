@@ -5,13 +5,16 @@
         <title>redditistics | What's on the front page?</title>
         <link href="static/css/style.css" rel="stylesheet">
         <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+        <script src="static/js/Chart.js"></script>
     </head>
     <body>
-        <div class="container">
-            <div class="page-header">
-                <h1>redditistics <small>What's in the front page?</small></h1>
+        <div id="wrap">
+            <div class="container">
+                <div class="page-header">
+                    <h1>redditistics <small>What's in the front page?</small></h1>
+                </div>
+                {% block content %}{% endblock %}
             </div>
-            {% block content %}{% endblock %}
             <div id="push"></div>
         </div>
         <div id="footer">

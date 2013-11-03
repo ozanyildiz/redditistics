@@ -1,6 +1,80 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+<div id="center-canvas">
+    <canvas id="canvas" height="350" width="350"></canvas><br />
+</div>
+<script>
+    var pieData = [{
+        value: 30,
+        color: "#F38630",
+        label: 'Sleep',
+        labelColor: 'white',
+        labelFontSize: '16',
+    }, {
+        value: 50,
+        color: "#E0E4CC",
+        label: 'Music',
+        labelColor: '#444',
+        labelFontSize: '1.4em',
+    }, {
+        value: 100,
+        color: "#69D2E7",
+        label: 'Work',
+        labelColor: 'rgb(0,0,0)',
+        labelFontSize: '175%'
+    }, {
+        value: 33,
+        color: "#949FB1",
+        label: 'funny',
+        labelColor: 'rgb(0,0,0)',
+        labelFontSize: '175%'
+    }, {
+        value: 40,
+        color: "#46BFBD",
+        label: 'explainlikeimfive',
+        labelColor: 'rgb(0,0,0)',
+        labelFontSize: '100%'
+    }, {
+        value: 40,
+        color: "#4D5360",
+        label: 'fuuuuuuuu',
+        labelColor: 'white',
+        labelFontSize: '100%'
+    }, {
+        value: 40,
+        color: "#F7464A",
+        label: 'GIF',
+        labelColor: 'white',
+        labelFontSize: '100%'
+    }, {
+        value: 20,
+        color: "#949FB1",
+        label: 'AMA',
+        labelColor: 'white',
+        labelFontSize: '100%'
+    }, {
+        value: 30,
+        color: "#FDB45C",
+        label: 'No way',
+        labelColor: 'white',
+        labelFontSize: '100%'
+    }, {
+        value: 20,
+        color: "#46BFBD",
+        label: 'TIL',
+        labelColor: 'white',
+        labelFontSize: '100%'
+    }];
+
+    var myChart = new Chart(document.getElementById("canvas").getContext("2d"));
+    var myPie = myChart.Pie(pieData, {
+        animationSteps: 100,
+        animationEasing: 'easeOutBounce'
+    });
+</script>
+
 <button type="button" class="btn btn-large btn-primary" onclick="location.href='{{ url_for('archive', year=prev_day.year, month=prev_day.month, day=prev_day.day) }}'">
     <span class="glyphicon glyphicon-chevron-left"></span> Previous day
 </button>

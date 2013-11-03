@@ -1,3 +1,15 @@
+html, body {
+    height: 100%;
+    /* The html and body elements cannot have any padding or margin. */
+}
+
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -60px;
+}
+
 #push, #footer {
     height: 60px;
 }
@@ -9,4 +21,10 @@
 .credit {
     color: #999999;
     margin: 20px 0;
+}
+
+#center-canvas {
+    width: 350px;
+    height: 350px;
+    margin: 0px auto;
 }
