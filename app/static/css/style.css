@@ -7,7 +7,7 @@
     min-height: 100%;
     height: auto !important;
     height: 100%;
-    margin: 0 auto -60px;
+    margin: 0 auto -40px;
 }
 
 #push, #footer {
@@ -30,11 +30,6 @@
 
 }
 
-#story-header {
+.center-content {
     text-align: center;
-    position:relative;
-}
-
-#inline {
-    display: inline-block;
 }
