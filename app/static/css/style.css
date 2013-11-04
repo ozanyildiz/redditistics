@@ -1,4 +1,4 @@
-html, body {
+ html, body {
     height: 100%;
     /* The html and body elements cannot have any padding or margin. */
 }
@@ -26,5 +26,15 @@ html, body {
 #center-canvas {
     width: 350px;
     height: 350px;
-    margin: 0px auto;
+    margin: 0 auto;
+
+}
+
+#story-header {
+    text-align: center;
+    position:relative;
+}
+
+#inline {
+    display: inline-block;
 }
