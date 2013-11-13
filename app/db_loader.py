@@ -33,10 +33,13 @@ def get_pruned_story(story_data):
 def main():
     stories = get_db_stories()
     while True:
-        raw_stories = get_front_page_stories()
-        for story in raw_stories:
-            pruned_story = get_pruned_story(story['data'])
-            stories.update({'permalink': pruned_story['permalink']}, pruned_story, True)
+        try:
+            raw_stories = get_front_page_stories()
+            for story in raw_stories:
+                pruned_story = get_pruned_story(story['data'])
+                stories.update({'permalink': pruned_story['permalink']}, pruned_story, True)
+        except Exception as e:
+            print e
         time.sleep(AN_HOUR)
 
 
