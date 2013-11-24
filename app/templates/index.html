@@ -6,67 +6,15 @@
     <canvas id="canvas" height="350" width="350"></canvas><br />
 </div>
 <script>
-    var pieData = [{
-        value: 30,
-        color: "#F38630",
-        label: 'Sleep',
-        labelColor: 'white',
-        labelFontSize: '16',
-    }, {
-        value: 50,
-        color: "#E0E4CC",
-        label: 'Music',
-        labelColor: '#444',
-        labelFontSize: '1.4em',
-    }, {
-        value: 100,
-        color: "#69D2E7",
-        label: 'Work',
-        labelColor: 'rgb(0,0,0)',
-        labelFontSize: '175%'
-    }, {
-        value: 33,
-        color: "#949FB1",
-        label: 'funny',
-        labelColor: 'rgb(0,0,0)',
-        labelFontSize: '175%'
-    }, {
-        value: 40,
-        color: "#46BFBD",
-        label: 'explainlikeimfive',
-        labelColor: 'rgb(0,0,0)',
-        labelFontSize: '100%'
-    }, {
-        value: 40,
-        color: "#4D5360",
-        label: 'fuuuuuuuu',
-        labelColor: 'white',
-        labelFontSize: '100%'
-    }, {
-        value: 40,
-        color: "#F7464A",
-        label: 'GIF',
-        labelColor: 'white',
-        labelFontSize: '100%'
-    }, {
-        value: 20,
-        color: "#949FB1",
-        label: 'AMA',
-        labelColor: 'white',
-        labelFontSize: '100%'
-    }, {
-        value: 30,
-        color: "#FDB45C",
-        label: 'No way',
-        labelColor: 'white',
-        labelFontSize: '100%'
-    }, {
-        value: 20,
-        color: "#46BFBD",
-        label: 'TIL',
-        labelColor: 'white',
-        labelFontSize: '100%'
-    }];
+    var pieData = [];
+
+    var colors = ["#F38630", "#F13035", "#F3D230", "#949FB1", "#46BFBD", "#4D5360", "#1D948F", "#998999", "#FFB571", "#304A73"];
+    var color_index = 0;
+
+    {% for subreddit in popular_subreddits %}
+        pieData.push({ value: {{subreddit['number']}}, color: colors[color_index], label:'{{subreddit['_id']['subreddit']}}', labelColor: 'white', labelFontSize: '125%'});
+        color_index++;
+    {% endfor %}
 
     var myChart = new Chart(document.getElementById("canvas").getContext("2d"));
     var myPie = myChart.Pie(pieData, {
