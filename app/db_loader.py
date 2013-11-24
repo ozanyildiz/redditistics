@@ -2,6 +2,7 @@ import json
 import urllib2
 import time
 import pymongo
+import re
 
 AN_HOUR = 3600 # in seconds
 
@@ -20,7 +21,11 @@ def get_pruned_story(story_data):
     s['title'] = story_data['title']
     s['url'] = story_data['url']
     s['subreddit'] = story_data['subreddit']
-    s['thumbnail'] = story_data['thumbnail']
+    thumbnail = story_data['thumbnail']
+    if re.search('jpg', thumbnail):
+        s['thumbnail'] = story_data['thumbnail']
+    else:
+        s['thumbnail'] = ''
     s['domain'] = story_data['domain']
     s['score'] = story_data['score']
     s['permalink'] = story_data['permalink']
