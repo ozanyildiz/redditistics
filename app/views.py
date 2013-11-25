@@ -21,7 +21,7 @@ def archive(year=get_today().year, month=get_today().month, day=get_today().day)
 def api_page():
     return render_template('api_page.html')
 
-@app.route('/api/stories/<int:year>-<int:month>-<int:day>')
+@app.route('/stories/<int:year>-<int:month>-<int:day>')
 def get_stories(year, month, day):
     date = construct_datetime_obj(year, month, day)
     stories = mongodb.get_stories(get_formatted_date(date))
