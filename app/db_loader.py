@@ -3,11 +3,18 @@ import urllib2
 import time
 import pymongo
 import re
+import os
+import time
 
 AN_HOUR = 3600 # in seconds
 
 def get_db_stories():
-    connection = pymongo.Connection("mongodb://localhost", safe=True)
+    MONGO_URI = os.environ.get('MONGO_URI')
+    if MONGO_URI:
+        connection = pymongo.Connection(MONGO_URI, safe=True)
+    else:
+        connection = pymongo.Connection("mongodb://localhost", safe=True) #when working at local
+
     db = connection.reddit
     return db.stories
 
@@ -43,8 +50,10 @@ def main():
             for story in raw_stories:
                 pruned_story = get_pruned_story(story['data'])
                 stories.update({'permalink': pruned_story['permalink']}, pruned_story, True)
+            print "Stories updated successfully.", time.strftime("%d/%m/%Y %H:%M:%S")
         except Exception as e:
             print e
+            print "Stories cannot updated successfully.", time.strftime("%d/%m/%Y %H:%M:%S")
         time.sleep(AN_HOUR)
 
 
