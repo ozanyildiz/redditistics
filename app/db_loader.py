@@ -4,9 +4,9 @@ import time
 import pymongo
 import re
 import os
-import time
+from apscheduler.scheduler import Scheduler
 
-AN_HOUR = 3600 # in seconds
+sched = Scheduler()
 
 def get_db_stories():
     MONGO_URI = os.environ.get('MONGO_URI')
@@ -42,20 +42,21 @@ def get_pruned_story(story_data):
 
     return s
 
-def main():
+
+@sched.interval_schedule(hours=1)
+def timed_job():
     stories = get_db_stories()
-    while True:
-        try:
-            raw_stories = get_front_page_stories()
-            for story in raw_stories:
-                pruned_story = get_pruned_story(story['data'])
-                stories.update({'permalink': pruned_story['permalink']}, pruned_story, True)
-            print "Stories updated successfully.", time.strftime("%d/%m/%Y %H:%M:%S")
-        except Exception as e:
-            print e
-            print "Stories cannot updated successfully.", time.strftime("%d/%m/%Y %H:%M:%S")
-        time.sleep(AN_HOUR)
+    try:
+        raw_stories = get_front_page_stories()
+        for story in raw_stories:
+            pruned_story = get_pruned_story(story['data'])
+            stories.update({'permalink': pruned_story['permalink']}, pruned_story, True)
+        print "Stories updated successfully.", time.strftime("%d/%m/%Y %H:%M:%S")
+    except Exception as e:
+        print e
+        print "Stories cannot updated successfully.", time.strftime("%d/%m/%Y %H:%M:%S")
 
+sched.start()
 
-if __name__ == "__main__":
-    main()
+while True:
+    pass
