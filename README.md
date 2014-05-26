@@ -6,3 +6,6 @@ Redditistics (reddit + statistics) is a web app that shows the stories which mak
 Keywords for this project are Python, Flask, MongoDB, Chart.js, REST...
 
 Environment varibles that need to be set: `MONGO_URI`
+
+[Live Demo](http://obscure-plateau-1289.herokuapp.com/)
+----------------------
